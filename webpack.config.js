@@ -19,6 +19,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
+      filename: 'index.html',
     }),
   ],
   devServer: {
@@ -27,5 +28,6 @@ module.exports = {
     },
     compress: true,
     port: 9000,
+    hot: true,
   },
 };

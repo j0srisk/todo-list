@@ -7,6 +7,32 @@
     <title>todo-list</title>
 <script defer src="main.js"></script></head>
 <body>
-    <h1>Some Text</h1>
+    <div class="page-wrap">
+        <header>
+            <h1>Todo List App</h1>
+        </header>
+        <main>
+            <aside class="sidebar">
+                <h2>Projects</h2>
+                <button id="addProjectBtn">Add Project</button>
+                <ul id="projectsContainer">
+                    <!-- Projects will be added here dynamically -->
+                </ul>
+            </aside>
+            <section class="content">
+                <h2 id="activeProjectTitle">Active Project</h2>
+                <button id="addTaskBtn">Add Task</button>
+                <ul id="tasksContainer">
+                    <!-- Tasks will be added here dynamically -->
+                </ul>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Joseph Risk | Made with ❤️</p>
+        <script>
+            document.getElementById("currentYear").textContent = new Date().getFullYear();
+        </script>
+    </footer>
 </body>
 </html>

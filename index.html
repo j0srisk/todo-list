@@ -15,16 +15,24 @@
             <aside class="sidebar">
                 <h2>Projects</h2>
                 <button id="addProjectBtn">Add Project</button>
-                <ul id="projectsContainer">
-                    <!-- Projects will be added here dynamically -->
-                </ul>
+                <div id="projectsContainer">
+                    <ul class="project-list">
+                        <!-- Projects will be added here dynamically -->
+                    </ul>
+                </div>
+                <input type="text" id="newProjectInput" placeholder="Project Title">
+                <button id="saveProjectBtn">Add Project</button>
             </aside>
             <section class="content">
-                <h2 id="activeProjectTitle">Active Project</h2>
+                <h2 id="activeProjectTitle">Active Project Title</h2>
                 <button id="addTaskBtn">Add Task</button>
-                <ul id="tasksContainer">
-                    <!-- Tasks will be added here dynamically -->
-                </ul>
+                <div id="tasksContainer">
+                    <ul class="todo-list">
+                        <!-- Tasks will be added here dynamically -->
+                    </ul>
+                </div>
+                <input type="text" id="newTaskInput" placeholder="Task Title">
+                <button id="saveTaskBtn">Add Task</button>
             </section>
         </main>
     </div>

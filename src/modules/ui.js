@@ -36,9 +36,8 @@ const UI = (() => {
     function renderProjects(projects) {
         projectList.innerHTML = '';
 
-        projects.forEach((project, index) => {
+        projects.forEach((project) => {
             const projectElement = createProjectElement(project);
-            //projectElement.dataset.index = index;
             projectList.appendChild(projectElement);
         });
     }

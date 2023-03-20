@@ -6,10 +6,11 @@ import Task from './modules/task';
 import UI from './modules/ui';
 
 let projectsList = [];
+let activeProject = null;
 
 function createDefaultProject() {
     addProject('Default Project');
-    UI.renderTasks(projectsList[0]);
+    addProject('Groceries');
 }
 
 function setupEventListeners() {
@@ -34,17 +35,30 @@ function setupEventListeners() {
     });
 }
 
+function setupProjectItemEventListeners() {
+    const projectItems = document.querySelectorAll('.project-item');
+    projectItems.forEach((projectItem) => {
+        projectItem.addEventListener('click', (event) => {
+            const projectTitle = event.target.textContent;
+            const project = projectsList.find((project) => project.title === projectTitle);
+            activeProject = project;
+            UI.renderTasks(activeProject);
+        });
+    });
+}
+
 function addProject(title) {
     const newProject = new Project(title);
     projectsList.push(newProject);
+    activeProject = newProject;
     UI.renderProjects(projectsList);
-    UI.renderTasks(newProject);
+    UI.renderTasks(activeProject);
+    setupProjectItemEventListeners();
 }
 
 function addTask(title) {
     const newTask = new Task(title);
     activeProject.tasks.push(newTask);
-    console.log(activeProject);
     UI.renderTasks(activeProject);
 }
 

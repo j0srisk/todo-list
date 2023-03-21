@@ -128,7 +128,13 @@ input[type="text"]:focus {
 
 /* Content styles */
 .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     flex: 1;
+}
+
+.tasks {
     padding: 2em;
 }
 
@@ -231,10 +237,9 @@ input[type="text"]:focus {
 
 /* Footer styles */
 footer {
-    background-color: #333;
-    color: #fff;
+    color: #999;
     text-align: center;
-    padding: 20px;
+    padding: 1em;
 }
 
 footer p {

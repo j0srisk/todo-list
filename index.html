@@ -5,34 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>todo-list</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="page-wrap">
-        <header>
-            <h1>Todo List App</h1>
-        </header>
         <main>
             <aside class="sidebar">
-                <h2>Projects</h2>
-                <button id="addProjectBtn">Add Project</button>
+                <h2>To-Do List</h2>
                 <div id="projectsContainer">
                     <ul class="project-list">
                         <!-- Projects will be added here dynamically -->
+                        
                     </ul>
                 </div>
-                <input type="text" id="newProjectInput" placeholder="Project Title">
-                <button id="saveProjectBtn">Add Project</button>
+                <button id="addProjectBtn">Add Project</button>
+                <div id="addProjectContainer">
+                    <input type="text" id="newProjectInput" placeholder="Project Title">
+                    <div id="addBtnContainer">
+                        <button class="input-btn" id="cancelProjectBtn">Cancel</button>
+                        <button class="input-btn" id="saveProjectBtn">Add Project</button>
+                    </div>
+                </div>
             </aside>
             <section class="content">
                 <h2 id="activeProjectTitle">Active Project Title</h2>
-                <button id="addTaskBtn">Add Task</button>
                 <div id="tasksContainer">
                     <ul class="todo-list">
                         <!-- Tasks will be added here dynamically -->
                     </ul>
                 </div>
-                <input type="text" id="newTaskInput" placeholder="Task Title">
-                <button id="saveTaskBtn">Add Task</button>
+                <div id="addTaskContainer">
+                    <input type="text" id="newTaskInput" placeholder="Task Title">
+                    <div id="addBtnContainer">
+                        <button class="input-btn" id="cancelTaskBtn">Cancel</button>
+                        <button class="input-btn" id="saveTaskBtn">Add Task</button>
+                    </div>
+                </div>
             </section>
         </main>
     </div>

@@ -1,161 +1,174 @@
 /* General styles */
-html, body {
-    height: 100%;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --green-gradient: linear-gradient(to right, #49c1a2, #56d798);
 }
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-    display: flex;
-    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
 }
 
 .page-wrap {
-    flex: 1;
-}
-
-header {
-    background-color: #4a4a4a;
-    padding: 10px;
-    text-align: center;
-}
-
-header h1 {
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 main {
     display: flex;
-    margin: 20px;
+    flex: 1;
+}
+
+h2 {
+    margin-bottom: 1em;
+}
+
+button {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+ul {
+    list-style: none;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #49c1a2;
 }
 
 /* Sidebar styles */
 .sidebar {
-    flex: 1;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-right: 20px;
-}
-
-.sidebar h2 {
-    margin-top: 0;
-    margin-bottom: 10px;
+    width: 300px;
+    background-color: #fff;
+    padding: 2em;
+    border-right: 1px solid #ddd;
 }
 
 #addProjectBtn {
-    background-color: #4a4a4a;
-    color: #ffffff;
-    border: none;
-    padding: 8px 12px;
+    background: var(--green-gradient);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.project-list li {
+    padding: 10px;
     cursor: pointer;
-    border-radius: 3px;
+    background-color: #eee;
+    border-bottom: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
 
-#addProjectBtn:hover {
-    background-color: #6b6b6b;
+.project-list li:hover {
+    background-color: #ddd;
 }
 
-#projectsContainer {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#projectsContainer li {
-    cursor: pointer;
-    padding: 8px 0;
-    border-bottom: 1px solid #eeeeee;
+#addProjectContainer {
+    display: none;
 }
 
-#projectsContainer li:last-child {
-    border-bottom: none;
+#addBtnContainer {
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+}
+
+.input-btn {
+    padding: 10px;
+    width: 50%;
+}
+
+#cancelProjectBtn {
+    background-color: #f44336;
+    color: #fff;
+}
+
+#saveProjectBtn {
+    background: linear-gradient(to right, #49c1a2, #56d798);
+    color: #fff;
 }
 
 /* Content styles */
 .content {
-    flex: 3;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    padding: 2em;
 }
 
-.content h2 {
-    margin-top: 0;
-    margin-bottom: 10px;
+#activeProjectTitle {
+    font-weight: 500;
 }
 
 #addTaskBtn {
-    background-color: #4a4a4a;
-    color: #ffffff;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 3px;
+    background: linear-gradient(to right, #49c1a2, #56d798);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin-bottom: 1em;
 }
 
-#addTaskBtn:hover {
-    background-color: #6b6b6b;
+.todo-list li {
+    padding: 10px;
+    background-color: #eee;
+    border-bottom: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1em;
 }
 
-#tasksContainer {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+#newTaskInput,
+#saveTaskBtn {
+    display: yes;
 }
 
-#tasksContainer li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid #eeeeee;
-}
-
-#tasksContainer li:last-child {
-    border-bottom: none;
-}
-
-.task-title {
-    flex: 1;
-}
-
-.task-controls {
-    display: flex;
-    gap: 8px;
-}
-
-.edit-btn,
-.delete-btn,
-.complete-btn {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-.edit-btn:hover,
-.delete-btn:hover,
-.complete-btn:hover {
-    color: #6b6b6b;
+#saveTaskBtn {
+    background: linear-gradient(to right, #49c1a2, #56d798);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    display: block;
+    width: 100%;
 }
 
 /* Footer styles */
 footer {
-    background-color: #4a4a4a;
-    padding: 10px;
+    background-color: #333;
+    color: #fff;
     text-align: center;
-    margin-top: 20px;
-    flex-shrink: 0
+    padding: 20px;
 }
 
 footer p {
-    color: #ffffff;
     margin: 0;
-    padding: 0;
 }

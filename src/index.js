@@ -10,7 +10,16 @@ let activeProject = null;
 
 function createDefaultProject() {
     addProject('Default Project');
-    addProject('Groceries');
+    addTask('Default Task 1');
+    addTask('Default Task 2');
+    addTask('Default Task 3');
+}
+
+function updateActiveProject(project) {
+    activeProject = project;
+    UI.renderTasks(activeProject);
+
+    return activeProject;
 }
 
 function setupEventListeners() {
@@ -35,25 +44,17 @@ function setupEventListeners() {
     });
 }
 
-function setupProjectItemEventListeners() {
-    const projectItems = document.querySelectorAll('.project-item');
-    projectItems.forEach((projectItem) => {
-        projectItem.addEventListener('click', (event) => {
-            const projectTitle = event.target.textContent;
-            const project = projectsList.find((project) => project.title === projectTitle);
-            activeProject = project;
-            UI.renderTasks(activeProject);
-        });
-    });
-}
-
 function addProject(title) {
     const newProject = new Project(title);
     projectsList.push(newProject);
-    activeProject = newProject;
+    updateActiveProject(newProject);
     UI.renderProjects(projectsList);
     UI.renderTasks(activeProject);
-    setupProjectItemEventListeners();
+}
+
+function removeProject(project) {
+    const index = projectsList.indexOf(project);
+    projectsList.splice(index, 1);
 }
 
 function addTask(title) {
@@ -64,3 +65,5 @@ function addTask(title) {
 
 createDefaultProject();
 setupEventListeners();
+
+export { updateActiveProject };

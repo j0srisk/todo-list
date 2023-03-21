@@ -66,7 +66,8 @@ input[type="text"]:focus {
     border-right: 1px solid #ddd;
 }
 
-#addProjectBtn {
+#addProjectBtn,
+#addTaskBtn {
     background: var(--green-gradient);
     color: #fff;
     padding: 10px;
@@ -86,6 +87,12 @@ input[type="text"]:focus {
 
 .project-list li:hover {
     background-color: #ddd;
+}
+
+.project-list .active {
+    padding: 8px;
+    border: #49c1a2 2px solid;
+    color: #49c1a2;
 }
 
 .project-item {
@@ -115,7 +122,7 @@ input[type="text"]:focus {
 }
 
 #saveProjectBtn {
-    background: linear-gradient(to right, #49c1a2, #56d798);
+    background: var(--green-gradient);
     color: #fff;
 }
 
@@ -130,7 +137,7 @@ input[type="text"]:focus {
 }
 
 #addTaskBtn {
-    background: linear-gradient(to right, #49c1a2, #56d798);
+    background: var(--green-gradient);
     color: #fff;
     padding: 10px;
     text-align: center;
@@ -141,19 +148,80 @@ input[type="text"]:focus {
 
 .todo-list li {
     padding: 10px;
-    background-color: #eee;
-    border-bottom: 1px solid #ddd;
+    background-color: transparent;
+    border-bottom: 1px solid #dddddd00;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.todo-list li:hover {
     border-radius: 5px;
-    margin-bottom: 1em;
+    background-color: rgba(73, 193, 162, 0.1);
 }
 
-#newTaskInput,
-#saveTaskBtn {
-    display: yes;
+.todo-list li:last-child {
+    border-bottom: none;
+}
+
+/* Add this rule to your CSS file */
+.task-item.completed .task-title {
+    text-decoration: line-through;
+    color: #999;
+    animation: strikeThrough 0.3s linear;
+}
+
+@keyframes strikeThrough {
+    0% {
+        color: inherit;
+        text-decoration: none;
+    }
+    100% {
+        color: #999;
+        text-decoration: line-through;
+    }
+}
+
+
+.task-checkbox {
+    appearance: none;
+    background-color: #fff;
+    border: 2px solid #49c1a2;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 20px;
+    margin-right: 10px;
+    outline: none;
+    position: relative;
+    width: 20px;
+}
+
+.task-checkbox:checked {
+    background-image: var(--green-gradient);
+    border: none;
+}
+
+.task-checkbox:checked::before {
+    content: "";
+    background-color: #fff;
+    border-radius: 50%;
+    height: 10px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+}
+
+
+#addTaskContainer {
+    display: none;
 }
 
 #saveTaskBtn {
-    background: linear-gradient(to right, #49c1a2, #56d798);
+    background: var(--green-gradient);
     color: #fff;
     padding: 10px;
     text-align: center;

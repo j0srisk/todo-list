@@ -5,6 +5,9 @@ const UI = (() => {
     const projectList = document.querySelector('.project-list');
     const todoList = document.querySelector('.todo-list');
 
+    //setup event listeners
+    function setupEventListeners(){
+        //event listerners for project input
     document.getElementById('addProjectBtn').addEventListener('click', function() {
         document.getElementById('addProjectBtn').style.display = 'none';
         document.getElementById('addProjectContainer').style.display = 'block';
@@ -16,7 +19,7 @@ const UI = (() => {
           event.preventDefault();
           document.getElementById('saveProjectBtn').click();
         }
-      });
+    });
   
     document.getElementById('cancelProjectBtn').addEventListener('click', function() {
         document.getElementById('addProjectBtn').style.display = 'block';
@@ -29,6 +32,33 @@ const UI = (() => {
         document.getElementById('addProjectContainer').style.display = 'none';
 
     });
+
+    //event listeners for task input
+    document.getElementById('addTaskBtn').addEventListener('click', function() {
+        document.getElementById('addTaskBtn').style.display = 'none';
+        document.getElementById('addTaskContainer').style.display = 'block';
+        document.getElementById('newTaskInput').focus();
+    });
+
+    document.getElementById('newTaskInput').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          document.getElementById('saveTaskBtn').click();
+        }
+    });
+
+    document.getElementById('cancelTaskBtn').addEventListener('click', function() {
+        document.getElementById('addTaskBtn').style.display = 'block';
+        document.getElementById('addTaskContainer').style.display = 'none';
+        document.getElementById('newTaskInput').value = '';
+    });
+
+    document.getElementById('saveTaskBtn').addEventListener('click', function() {
+        document.getElementById('addTaskBtn').style.display = 'block';
+        document.getElementById('addTaskContainer').style.display = 'none';
+
+    });
+    }
 
     function createProjectElement(project) {
         const projectElement = document.createElement('li');
@@ -61,21 +91,39 @@ const UI = (() => {
         projectElement.classList.add('active');
       
         return projectElement;
-      }
+    }
       
 
     function createTaskElement(task) {
         const taskElement = document.createElement('li');
         taskElement.classList.add('task-item');
-
+    
+        const checkbox = document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        checkbox.classList.add('task-checkbox');
+    
         const taskTitle = document.createElement('span');
         taskTitle.classList.add('task-title');
         taskTitle.textContent = task.title;
-
+    
+        taskElement.appendChild(checkbox);
         taskElement.appendChild(taskTitle);
+    
+        document.getElementById('newTaskInput').value = '';
+    
+        taskElement.childNodes[0].addEventListener('click', (event) => {
+            if (event.target.checked) {
+                taskElement.classList.add('completed');
+                task.completed = true;
+            } else {
+                taskElement.classList.remove('completed');
+                task.completed = false;
+            }
+        });
 
         return taskElement;
     }
+    
 
     function renderProjects(projects) {
         projectList.innerHTML = '';
@@ -97,6 +145,8 @@ const UI = (() => {
             todoList.appendChild(taskElement);
         });
     }
+
+    setupEventListeners();
 
     return {
         renderProjects,

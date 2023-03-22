@@ -195,6 +195,14 @@ input[type="text"]:focus {
     justify-content: space-between;
     }
 
+    .task-title {
+        flex: 1;
+    }
+
+    .task-title:focus {
+        outline: none;
+    }
+
     .task-days-left {
         font-size: 12px;
         color: #999;
@@ -317,6 +325,7 @@ input[type="text"]:focus {
 .task-details {
     display: flex;
     width: 100%;
+    padding-left: 30px;
     gap: 5px;
     margin-top: 10px;
 }
@@ -356,6 +365,7 @@ input[type="text"]:focus {
 .task-edit-buttons {
     display: flex;
     gap: 5px;
+    padding-left: 30px;
     justify-content: end;
     margin-top: 5px;
     width: 100%;

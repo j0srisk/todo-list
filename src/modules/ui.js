@@ -91,7 +91,21 @@ const UI = (() => {
     
         const taskTitle = document.createElement('span');
         taskTitle.classList.add('task-title');
+        taskTitle.contentEditable = true;
         taskTitle.textContent = task.title;
+        taskTitle.addEventListener('blur', () => {
+            task.title = taskTitle.textContent;
+            console.log(task);
+        });
+
+        // Prevent line breaks when the user presses the Enter key
+        taskTitle.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+            event.preventDefault();
+            taskTitle.blur();
+            }
+        });
+          
 
         const taskDaysLeft = document.createElement('span');
         taskDaysLeft.classList.add('task-days-left');

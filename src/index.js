@@ -35,11 +35,11 @@ function setupEventListeners() {
 
     // Task Input Event Listeners
     const taskInputField = document.querySelector('#newTaskInput');
-    const taskSubmitButton = document.querySelector('#saveTaskBtn');
-    taskSubmitButton.addEventListener('click', () => {
-        const taskTitle  = taskInputField.value.trim();
-        if(taskTitle){
-            addTask(taskTitle);
+
+    taskInputField.addEventListener('keydown', (event) => {
+        if(event.key === 'Enter'){
+            event.preventDefault();
+            addTask(taskInputField.value);
         }
     });
 }

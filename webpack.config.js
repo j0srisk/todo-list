@@ -14,8 +14,20 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/[name].[hash].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
+  
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',

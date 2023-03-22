@@ -30,21 +30,15 @@
                 </div>
             </aside>
             <section class="content">
-                <div class="tasks">
+                <div class="active-project">
                     <h2 id="activeProjectTitle">Active Project Title</h2>
-                    <div id="tasksContainer">
-                        <ul class="todo-list">
-                            <!-- Tasks will be added here dynamically -->
-                        </ul>
-                    </div>
-                    <button id="addTaskBtn">Add Task</button>
-                    <div id="addTaskContainer">
-                        <input type="text" id="newTaskInput" placeholder="Task Title">
-                        <div id="addBtnContainer">
-                            <button class="input-btn" id="cancelTaskBtn">Cancel</button>
-                            <button class="input-btn" id="saveTaskBtn">Add Task</button>
-                        </div>
-                    </div>
+                    <ul id="activeProjectTasks">
+                        <!-- Tasks will be added here dynamically -->
+                    </ul>
+                    <li id="taskInput">
+                        <p id="plusIcon">+</p>
+                        <input type="text" id="newTaskInput" placeholder="Add Task">
+                    </li>
                 </div>
                 <footer>
                     <p>&copy; <span id="currentYear"></span> Joseph Risk // Github</p>

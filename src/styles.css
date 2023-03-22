@@ -173,6 +173,7 @@ input[type="text"]:focus {
     .task-header {
     display: flex;
     width: 100%;
+    gap: 10px;
     align-items: center;
     justify-content: space-between;
     }
@@ -191,6 +192,16 @@ input[type="text"]:focus {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    }
+
+    .task-days-left {
+        font-size: 12px;
+        color: #999;
+    }
+
+    .task-days-left.overdue {
+        color: #f44336;
     }
     
     .edit-section {
@@ -227,34 +238,46 @@ input[type="text"]:focus {
     }
     
     .task-checkbox {
-    appearance: none;
-    background-color: #fff;
-    border: 2px solid #49c1a2;
-    border-radius: 50%;
-    cursor: pointer;
-    height: 20px;
-    margin-right: 10px;
-    outline: none;
-    position: relative;
-    width: 20px;
+        appearance: none;
+        background-color: #fff;
+        border: 2px solid #49c1a2;
+        border-radius: 50%;
+        cursor: pointer;
+        height: 20px;
+        outline: none;
+        position: relative;
+        width: 20px;
+    }
+    
+    .task-checkbox.high-priority {
+        border-color: #e74c3c;
+    }
+    
+    .task-checkbox.medium-priority {
+        border-color: #f1c40f;
+    }
+    
+    .task-checkbox.low-priority {
+        border-color: #3498db;
     }
     
     .task-checkbox:checked {
-    background-image: var(--green-gradient);
-    border: none;
+        background-image: var(--green-gradient);
+        border: none;
     }
     
     .task-checkbox:checked::before {
-    content: "";
-    background-color: #fff;
-    border-radius: 50%;
-    height: 10px;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
+        content: "";
+        background-color: #fff;
+        border-radius: 50%;
+        height: 10px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
     }
+    
     
     #taskInput {
     list-style: none;
@@ -293,7 +316,7 @@ input[type="text"]:focus {
 /* Add these new styles to your CSS file */
 .task-details {
     display: flex;
-    flex-direction: column;
+    width: 100%;
     gap: 5px;
     margin-top: 10px;
 }
@@ -311,11 +334,12 @@ input[type="text"]:focus {
 
 .due-date-input:focus {
     border-color: #49c1a2;
+    width: 100%;
 }
 
 .priorty-picker {
     font-size: 14px;
-    width: 100%;
+    width: 33%;
     padding: 5px;
     margin-bottom: 5px;
     font-size: 16px;
@@ -332,18 +356,20 @@ input[type="text"]:focus {
 .task-edit-buttons {
     display: flex;
     gap: 5px;
-    justify-content: space-between;
+    justify-content: end;
     margin-top: 5px;
+    width: 100%;
 }
 
 .cancel-task-btn,
 .save-task-btn {
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 10px 10px;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .cancel-task-btn:hover,

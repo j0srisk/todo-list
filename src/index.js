@@ -4,15 +4,16 @@ import './styles.css';
 import Project from './modules/project';
 import Task from './modules/task';
 import UI from './modules/ui';
+import Storage from './modules/storage';
 
 let projectsList = [];
 let activeProject = null;
 
 function createDefaultProject() {
     addProject('Inbox');
-    addTask('Default Task 1');
-    addTask('Default Task 2');
-    addTask('Default Task 3');
+    addTask('Create a new project');
+    addTask('Create a new task');
+    addTask('Mark a task as completed');
 }
 
 function updateActiveProject(project) {
@@ -21,8 +22,6 @@ function updateActiveProject(project) {
 
     return activeProject;
 }
-
-//comment
 
 function setupEventListeners() {
     // Project Input Event Listeners
@@ -53,6 +52,7 @@ function addProject(title) {
     updateActiveProject(newProject);
     UI.renderProjects(projectsList);
     UI.renderTasks(activeProject);
+    Storage.save(projectsList);
 }
 
 function deleteProject(project) {
@@ -61,6 +61,7 @@ function deleteProject(project) {
     UI.renderProjects(projectsList);
     updateActiveProject(projectsList[0]);
     UI.renderTasks(activeProject);
+    Storage.save(projectsList);
 }
 
 function addTask(title) {
@@ -68,6 +69,7 @@ function addTask(title) {
     newTask.dueDate = '';
     activeProject.tasks.push(newTask);
     UI.renderTasks(activeProject);
+    Storage.save(projectsList);
 }
 
 function updateTask(task, title, completed, dueDate, priority) {
@@ -76,16 +78,31 @@ function updateTask(task, title, completed, dueDate, priority) {
     task.dueDate = dueDate;
     task.priority = priority;
     UI.renderTasks(activeProject);
+    Storage.save(projectsList);
 }
 
 function deleteTask(task) {
     const taskIndex = activeProject.tasks.indexOf(task);
     activeProject.tasks.splice(taskIndex, 1);
     UI.renderTasks(activeProject);
-    console.log(activeProject.tasks);
+    Storage.save(projectsList);
 };
 
-createDefaultProject();
+function loadProjects() {
+    const storedProjectsList = Storage.load();
+    if (storedProjectsList.length === 0) {
+        console.log('No projects found in local storage. Creating default project.');
+        createDefaultProject();
+    } else {
+        projectsList = storedProjectsList;
+    }
+    updateActiveProject(projectsList[0]);
+    UI.renderProjects(projectsList);
+}
+
 setupEventListeners();
+loadProjects();
+
+//localStorage.clear();
 
 export { updateActiveProject, deleteProject, updateTask, deleteTask };

@@ -55,7 +55,6 @@ const UI = (() => {
             const ActiveProject = updateActiveProject(project);
             const projectElements = document.querySelectorAll('.project-item');
             projectElements.forEach((projectElement) => {
-                console.log(projectElement);
                 projectElement.classList.remove('active');
             });
             projectElement.classList.add('active');
@@ -80,7 +79,6 @@ const UI = (() => {
         //repeated code
         const projectElements = document.querySelectorAll('.project-item');
             projectElements.forEach((projectElement) => {
-                console.log(projectElement);
                 projectElement.classList.remove('active');
         });
         projectElement.classList.add('active');

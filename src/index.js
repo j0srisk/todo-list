@@ -22,6 +22,8 @@ function updateActiveProject(project) {
     return activeProject;
 }
 
+//comment
+
 function setupEventListeners() {
     // Project Input Event Listeners
     const projectSubmitButton = document.querySelector('#saveProjectBtn');

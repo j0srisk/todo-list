@@ -171,6 +171,11 @@ input[type="text"]:focus {
     font-size: 16px;
     font-weight: 400;
     }
+
+    #activeProjectTasks li:last-child .task-item {
+        margin-bottom: 0;
+    }
+    
     
     .task-header {
     display: flex;
@@ -220,7 +225,8 @@ input[type="text"]:focus {
     }
     
     .edit-task-icon,
-    .delete-task-icon {
+    .delete-task-icon,
+    .delete-project-icon {
     align-items: center;
     justify-content: center;
     display: flex;

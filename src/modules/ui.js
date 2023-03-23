@@ -1,4 +1,4 @@
-import { updateActiveProject, updateTask, deleteTask} from '../index.js';
+import { updateActiveProject, deleteProject, updateTask, deleteTask} from '../index.js';
 import { differenceInDays, parseISO } from 'date-fns';
 import editSvg from '../assets/IconoirEditPencil.svg';
 import deleteSvg from '../assets/IconoirTrash.svg';
@@ -41,8 +41,13 @@ const UI = (() => {
         const projectTitle = document.createElement('span');
         projectTitle.classList.add('project-title');
         projectTitle.textContent = project.title;
-      
         projectElement.appendChild(projectTitle);
+
+        const deleteProjectIcon = document.createElement('img');
+        deleteProjectIcon.classList.add('delete-project-icon');
+        deleteProjectIcon.style.display = 'none';
+        deleteProjectIcon.src = deleteSvg;
+        projectElement.appendChild(deleteProjectIcon);
       
         document.getElementById('newProjectInput').value = '';
         
@@ -54,6 +59,22 @@ const UI = (() => {
                 projectElement.classList.remove('active');
             });
             projectElement.classList.add('active');
+        });
+
+        projectElement.addEventListener('mouseover', (event) => {
+            if (project.title !== 'Inbox') {
+                deleteProjectIcon.style.display = 'block';
+            }
+        });
+
+        projectElement.addEventListener('mouseout', (event) => {    
+            deleteProjectIcon.style.display = 'none';
+        });
+
+        deleteProjectIcon.addEventListener('click', (event) => {
+            event.stopPropagation();
+            deleteProject(project);
+            projectElement.remove();
         });
 
         //repeated code
@@ -268,6 +289,7 @@ const UI = (() => {
         if (task.completed) {
             taskElement.classList.add('completed');
             checkbox.checked = true;
+            taskDaysLeft.style.display = 'none';
         }
 
         dueDateInput.value = task.dueDate;

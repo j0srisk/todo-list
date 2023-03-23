@@ -9,7 +9,7 @@ let projectsList = [];
 let activeProject = null;
 
 function createDefaultProject() {
-    addProject('Default Project');
+    addProject('Inbox');
     addTask('Default Task 1');
     addTask('Default Task 2');
     addTask('Default Task 3');
@@ -53,6 +53,14 @@ function addProject(title) {
     UI.renderTasks(activeProject);
 }
 
+function deleteProject(project) {
+    const projectIndex = projectsList.indexOf(project);
+    projectsList.splice(projectIndex, 1);
+    UI.renderProjects(projectsList);
+    updateActiveProject(projectsList[0]);
+    UI.renderTasks(activeProject);
+}
+
 function addTask(title) {
     const newTask = new Task(title);
     activeProject.tasks.push(newTask);
@@ -78,4 +86,4 @@ function deleteTask(task) {
 createDefaultProject();
 setupEventListeners();
 
-export { updateActiveProject, updateTask, deleteTask };
+export { updateActiveProject, deleteProject, updateTask, deleteTask };

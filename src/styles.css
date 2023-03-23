@@ -103,6 +103,8 @@ input[type="text"]:focus {
 
 #addProjectContainer {
     display: none;
+    flex-direction: column;
+
 }
 
 #addBtnContainer {

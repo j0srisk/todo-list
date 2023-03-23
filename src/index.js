@@ -24,9 +24,9 @@ function updateActiveProject(project) {
 
 function setupEventListeners() {
     // Project Input Event Listeners
-    const projectInputField = document.querySelector('#newProjectInput');
     const projectSubmitButton = document.querySelector('#saveProjectBtn');
     projectSubmitButton.addEventListener('click', () => {
+        const projectInputField = document.querySelector('#newProjectInput');
         const projectTitle  = projectInputField.value.trim();
         if(projectTitle){
             addProject(projectTitle);
@@ -35,11 +35,12 @@ function setupEventListeners() {
 
     // Task Input Event Listeners
     const taskInputField = document.querySelector('#newTaskInput');
-
     taskInputField.addEventListener('keydown', (event) => {
         if(event.key === 'Enter'){
             event.preventDefault();
-            addTask(taskInputField.value);
+            if (taskInputField.value){
+                addTask(taskInputField.value);
+            }
         }
     });
 }
@@ -52,18 +53,29 @@ function addProject(title) {
     UI.renderTasks(activeProject);
 }
 
-function removeProject(project) {
-    const index = projectsList.indexOf(project);
-    projectsList.splice(index, 1);
-}
-
 function addTask(title) {
     const newTask = new Task(title);
     activeProject.tasks.push(newTask);
     UI.renderTasks(activeProject);
 }
 
+function updateTask(task, title, completed, dueDate, priority) {
+    task.title = title;
+    task.completed = completed;
+    task.dueDate = dueDate;
+    task.priority = priority;
+    console.log('updated task: ', task);
+    UI.renderTasks(activeProject);
+}
+
+function deleteTask(task) {
+    const taskIndex = activeProject.tasks.indexOf(task);
+    activeProject.tasks.splice(taskIndex, 1);
+    UI.renderTasks(activeProject);
+    console.log(activeProject.tasks);
+};
+
 createDefaultProject();
 setupEventListeners();
 
-export { updateActiveProject };
+export { updateActiveProject, updateTask, deleteTask };

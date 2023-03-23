@@ -63,6 +63,7 @@ function deleteProject(project) {
 
 function addTask(title) {
     const newTask = new Task(title);
+    newTask.dueDate = '';
     activeProject.tasks.push(newTask);
     UI.renderTasks(activeProject);
 }
@@ -72,7 +73,6 @@ function updateTask(task, title, completed, dueDate, priority) {
     task.completed = completed;
     task.dueDate = dueDate;
     task.priority = priority;
-    console.log('updated task: ', task);
     UI.renderTasks(activeProject);
 }
 

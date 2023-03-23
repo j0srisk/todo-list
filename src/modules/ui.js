@@ -214,7 +214,6 @@ const UI = (() => {
         });
 
         editTaskIcon.addEventListener('click', (event) => {
-            console.log('edit task icon clicked');
             toggleTaskDetails();
         });
 
@@ -257,9 +256,8 @@ const UI = (() => {
         }
 
         function addDateText() {
-            if (task.dueDate != null){
+            if (task.dueDate != '' ){
                 const daysLeft = differenceInDays(parseISO(task.dueDate), removeTimeFromDate(new Date()));
-                console.log(daysLeft)
                 if (daysLeft < 0) {
                     taskDaysLeft.classList.add('overdue');
                     taskDaysLeft.textContent = 'Overdue';

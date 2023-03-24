@@ -17,9 +17,11 @@ function createDefaultProject() {
 }
 
 function updateActiveProject(project) {
-    activeProject = project;
-    UI.renderTasks(activeProject);
-
+    if (project != null){
+        activeProject = project;
+        UI.renderTasks(activeProject);
+    }
+    
     return activeProject;
 }
 

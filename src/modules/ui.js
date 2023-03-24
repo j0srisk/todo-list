@@ -75,13 +75,6 @@ const UI = (() => {
             deleteProject(project);
             projectElement.remove();
         });
-
-        //repeated code
-        const projectElements = document.querySelectorAll('.project-item');
-            projectElements.forEach((projectElement) => {
-                projectElement.classList.remove('active');
-        });
-        projectElement.classList.add('active');
       
         return projectElement;
     }
@@ -305,8 +298,13 @@ const UI = (() => {
 
         projects.forEach((project) => {
             const projectElement = createProjectElement(project);
+            console.log(updateActiveProject());
+            if (project === updateActiveProject()) {
+                projectElement.classList.add('active');
+            }
             projectList.appendChild(projectElement);
         });
+
     }
     
     function renderTasks(project) {
